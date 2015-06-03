@@ -1,4 +1,5 @@
 import sys
+import traceback
 import os
 import re
 from os import listdir
@@ -33,21 +34,26 @@ if __name__ == '__main__':
 
     gexf = Gexf("KB","SOU-relationer")
     graph=gexf.addGraph("directed","static","SOU-grafen")
-    graph.addNodeAttribute(title="name", defaultValue=None, type="string")
-    graph.addNodeAttribute(title="number", defaultValue=None, type="string")
-    graph.addNodeAttribute(title="length", defaultValue=None, type="integer")
+    an = graph.addNodeAttribute(title="name", defaultValue=None, type="string")
+    al = graph.addNodeAttribute(title="length", defaultValue=None, type="integer")
+    ano = graph.addNodeAttribute(title="number", defaultValue=None, type="string")
 
-    for sou in SOU.select():
-       n = graph.addNode(sou.number, sou.number)
-       #n.addAttribute("name", sou.name)
-       #n.addAttribute("length", sou.length)
-       #n.addAttribute("number", sou.number)
+    try:
+        for sou in SOU.select():
+           n = graph.addNode(sou.number, sou.number)
+           n.addAttribute(an, sou.name)
+           n.addAttribute(al, str(sou.length))
+           n.addAttribute(ano, sou.number)
+
+        for edge in Relation.select():
+            graph.addEdge(edge.id, edge.fromsou.number, edge.tosou.number)
+
+        output_file=open(destination_file,"w")
+        gexf.write(output_file)
+
+    except:
+        traceback.print_exc(file=sys.stdout)
 
 
-    for edge in Relation.select():
-        graph.addEdge(edge.id, edge.fromsou.number, edge.tosou.number)
-
-    output_file=open(destination_file,"w")
-    gexf.write(output_file)
 
 
