@@ -347,7 +347,6 @@ Applehult
 Applekulla
 Appleryd
 Appuna
-Ar
 Araksuolo
 Aramo
 Aratorp
@@ -10424,7 +10423,6 @@ Magria
 Magön
 Mahult
 Maitum
-Maj
 Majenfors
 Majorna
 Majviken

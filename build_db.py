@@ -34,7 +34,7 @@ def parse_name(filename):
 
 if __name__ == '__main__':
 
-    db.create_tables([SOU, References], safe=True)
+    db.create_tables([SOU, Relation], safe=True)
 
     folder = sys.argv[1] # root folder for txt files. Expecting e.g. <root>/20tal/<soufile>.txt
     print "Working on %s" % folder
