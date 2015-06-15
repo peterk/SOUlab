@@ -57,4 +57,31 @@ Verktyget grep har stöd för [strängmatchning med Aho-Corasick](http://en.wiki
 grep -owf features.txt data/30tal/*.txt
 ```
 
+### 4. Arbeta med ordmodell
 
+Det borde gå att arbeta med SOU-korpusen i [word2vec](https://docs.google.com/a/peterkrantz.se/file/d/0B7XkCwpI5KDYRWRnd1RzWXQ2TWc/edit) för att kunna göra
+andra typer av analyser. gen_word2vec.py tränar en modell med SOU-datat:
+
+```
+python gen_word2vec.py ./data/
+```
+
+Körtiden kan vara någon timme för att skapa informationen. När det är
+klart utforskar man enklast datamängden från python på kommandoraden.
+Starta en ny python-tolk och testa enligt nedan:
+
+```python
+import gensim
+
+# ladda den genererade modellen
+model = gensim.models.Word2Vec.load("gensim2.model")
+
+# Det borde gå att testa frågor i stil med
+model.doesnt_match("stat kommun landsting ambassad".split())
+# ambassad
+
+model.most_similar(positive=[u'integritet', u'lag'], topn=1)
+# [(u'datalagen', 0.7018075585365295)]
+
+model.most_similar(positive=[u'humaniora','forskning'], topn=1)
+```

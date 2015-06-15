@@ -1,3 +1,5 @@
 peewee==2.6.1
 lxml
 pygexf
+nltk
+gensim
