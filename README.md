@@ -57,10 +57,11 @@ Verktyget grep har stöd för [strängmatchning med Aho-Corasick](http://en.wiki
 grep -owf features.txt data/30tal/*.txt
 ```
 
-### 4. Arbeta med ordmodell
+### 4. Deep learning med word2vec
 
 Det borde gå att arbeta med SOU-korpusen i [word2vec](https://docs.google.com/a/peterkrantz.se/file/d/0B7XkCwpI5KDYRWRnd1RzWXQ2TWc/edit) för att kunna göra
-andra typer av analyser. gen_word2vec.py tränar en modell med SOU-datat:
+andra typer av analyser även om OCR-underlaget troligtvis kommer skapa
+en del problem. gen_word2vec.py tränar en modell med SOU-datat:
 
 ```
 python gen_word2vec.py ./data/
