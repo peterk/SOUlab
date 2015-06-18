@@ -59,7 +59,11 @@ grep -owf features.txt data/30tal/*.txt
 
 ### 4. Deep learning med word2vec
 
-Det borde gå att arbeta med SOU-korpusen i [word2vec](https://docs.google.com/a/peterkrantz.se/file/d/0B7XkCwpI5KDYRWRnd1RzWXQ2TWc/edit) för att kunna göra
+Word2vec tar en corpus av text och omvandlar till ordvektorer. Med dessa
+går det att göra andra typer av analyser, t.ex. avständ mellan ord mm.
+Det borde gå att arbeta med SOU-korpusen i
+[word2vec](https://docs.google.com/a/peterkrantz.se/file/d/0B7XkCwpI5KDYRWRnd1RzWXQ2TWc/edit)
+för att kunna göra
 andra typer av analyser även om OCR-underlaget troligtvis kommer skapa
 en del problem. gen_word2vec.py tränar en modell med SOU-datat:
 
