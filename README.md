@@ -81,12 +81,16 @@ import gensim
 # ladda den genererade modellen
 model = gensim.models.Word2Vec.load("gensim2.model")
 
-# Det borde gå att testa frågor i stil med
+
+model.most_similar(u"amatör")
+# [(u'amatörteater', musikföreningar', 0.7612131834030151), (u'folkdans', 0.7437361478805542), (u'symfonisk', 0.7418662309646606), (u'allsång', 0.7417885661125183)] ...
+
+
 model.doesnt_match("stat kommun landsting ambassad".split())
 # ambassad
+
 
 model.most_similar(positive=[u'integritet', u'lag'], topn=1)
 # [(u'datalagen', 0.7018075585365295)]
 
-model.most_similar(positive=[u'humaniora','forskning'], topn=1)
 ```
